@@ -15,6 +15,13 @@ class IdiomsController < ApplicationController
         render json: @idiom
     end
 
+    def update
+        idiom = Idiom.find(params[:id])
+        idiom.update(idiom_params)
+        render json: idiom
+    end
+    
+
     private
 
     def idiom_params
