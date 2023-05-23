@@ -2,12 +2,12 @@ class IdiomsController < ApplicationController
 
     def index
         @idioms = Idiom.all
-        render json: @idioms
+        render json: @idioms, include: [:id, :name, :elNum, :abbr, :phrase, :meaning, :usage, :xy, :category]
     end
 
     def show
         @idiom = Idiom.find(params[:id])
-        render json: @idiom
+        render json: @idiom, serializer: IdiomWithTagsSerializer
     end
 
     def show_by_abbr
@@ -17,7 +17,7 @@ class IdiomsController < ApplicationController
 
     def update
         idiom = Idiom.find(params[:id])
-        idiom.update(idiom_params)
+        idiom.update!(idiom_params)
         render json: idiom
     end
     
