@@ -2,7 +2,7 @@ class IdiomsController < ApplicationController
 
     def index
         @idioms = Idiom.all
-        render json: @idioms, include: [:id, :name, :elNum, :abbr, :phrase, :meaning, :usage, :xy, :category]
+        render json: @idioms
     end
 
     def show
