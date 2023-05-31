@@ -20,6 +20,11 @@ class IdiomsController < ApplicationController
         idiom.update!(idiom_params)
         render json: idiom
     end
+
+    def categories
+        @categories = Idiom.pluck(:category).uniq
+        render json: @categories
+    end
     
 
     private
